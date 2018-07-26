@@ -9,7 +9,7 @@ export class FflokService {
 
   constructor(private http:HttpClient) { }
 
-  baseUrl = environment.baseUrl;
+  baseUrl = "https://dev.fflok.orevonlabs.fr";
   headers = { 
     'Content-Type': 'application/json',
     'Connection': 'Keep-Alive',

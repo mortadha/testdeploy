@@ -15,7 +15,7 @@ export class AdminService {
         
     });
     let options = new RequestOptions({ headers: headers });
-   return this.http.post('http://localhost:3000/api/admin/loginAdmin',data,{
+   return this.http.post('https://dev.fflok.orevonlabs.fr/api/admin/loginAdmin',data,{
         headers : {
             'x-api-key':'InJIznpwpt07sHYeRzqJ5VXDHqmGqXJQ-AwOtaVdWuciqxJocAjW1MhHNktDLPbTj'
         }});

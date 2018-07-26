@@ -12,7 +12,7 @@ export class UserService {
 
   constructor(private http:HttpClient,private mysocket : Socket) { }
 
-  baseUrl = environment.baseUrl;
+  baseUrl = "https://dev.fflok.orevonlabs.fr";
   headers = { 
     'Content-Type': 'application/json',
     'Connection': 'Keep-Alive',

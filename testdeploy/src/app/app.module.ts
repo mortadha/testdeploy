@@ -27,7 +27,7 @@ import { LoginPageComponent } from './pages/content-pages/login/login-page.compo
 import * as $ from 'jquery';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {'path':'/api/socket.io/','Access-Control-Allow-Origin':'*'} };
+const config: SocketIoConfig = { url: 'https://dev.fflok.orevonlabs.fr', options: {'path':'/api/socket.io/','Access-Control-Allow-Origin':'*'} };
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
