@@ -1,0 +1,133 @@
+<ng-snotify></ng-snotify>
+<!-- Striped row layout section start -->
+<section id="striped-row-form-layouts">
+	<div class="row">
+        <div class="col-sm-12">
+			<div class="content-header" *ngIf="idPlace; else add">
+				Edite Place 
+			</div>
+			<ng-template #add><div class="content-header">Ajouter Place</div></ng-template>
+        </div>
+    </div>
+
+	<div class="row justify-content-md-center">
+		<div class="col-md-9">
+	        <div class="card">
+	            <div class="card-header">
+	                <h4 class="card-title" id="striped-row-layout-card-center">
+						<div  *ngIf="idPlace; else add">
+							Edite Place 
+						</div>
+						<ng-template #add><div>Ajouter Place</div></ng-template>
+					</h4>
+	               
+	            </div>
+	            <div class="card-body">
+	                <div class="px-3">
+						<form class="form form-horizontal striped-rows"  (ngSubmit)="onSubmit()" #f="ngForm">
+							<div class="form-body">
+									<div class="form-group row">
+											<!--Basic google map starts-->
+											<section id="map">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="content-header">Position</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="card">
+															<div class="card-body">
+																<div class="card-block mt-2">
+																		<div class="form-group">
+																				<input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" id="search" class="form-control" #search [formControl]="searchControl">
+																			  </div>
+																		<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+																		<agm-marker [label]="labelOptions" [iconUrl]="'assets/img/iconMap.png'" [latitude]="lat" (dragEnd)="onPositionUpdate($event)" [markerDraggable]="true" [longitude]="lng" >
+																			<agm-snazzy-info-window [maxWidth]="400" [closeWhenOthersOpen]="true">
+																				<ng-template>
+																					 My position
+																				</ng-template>
+																			  </agm-snazzy-info-window>
+																		</agm-marker>
+																		<agm-marker *ngFor="let place of listePlace; let i = index"  (markerClick)="markerClick(place)"   [latitude]="place.geometry.location.lat"  [longitude]="place.geometry.location.lng" >
+																			<agm-snazzy-info-window [maxWidth]="600" [closeWhenOthersOpen]="true">
+																				<ng-template>
+																					{{place.name}}
+																				</ng-template>
+																			  </agm-snazzy-info-window>
+																		</agm-marker>
+																	</agm-map>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</section>
+											<!--Basic google map ends-->
+										</div>
+	                			<div class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput1">Nom</label>
+	                            	<div class="col-md-9">
+										<input type="text" id="name"  class="form-control" placeholder="name" name="name" ngModel required>
+											
+	                            	</div>
+		                        </div>
+
+	                			<div class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput2">adresse</label>
+	                            	<div class="col-md-9">
+										<input type="text" id="eventRegInput2" class="form-control" placeholder="adresse" name="adresse" ngModel required>
+									</div>
+								</div>
+								<div class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput2">phone</label>
+	                            	<div class="col-md-9">
+										<input type="text" id="phone" class="form-control" placeholder="phone" name="phone" ngModel required>
+									</div>
+								</div>
+								<div class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput2">premium</label>
+	                            	<div class="col-md-9">
+										<ui-switch name="premium" ngModel (click)="clickPremium()" [(ngModel)]="premium" [checked]="premium"></ui-switch>
+									</div>
+								</div>
+								<div   class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput2">Login</label>
+	                            	<div class="col-md-9">
+										<input type="text" id="loginPlace" class="form-control" placeholder="loginPlace" name="loginPlace" ngModel >
+									</div>
+								</div>
+								<div   class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput2">Login</label>
+	                            	<div class="col-md-9">
+										<input type="text" id="id_google"  name="id_google" ngModel >
+									</div>
+		                        </div>
+								<div class="form-group row">
+	                            	<label class="col-md-3 label-control" for="eventRegInput2">image</label>
+	                            	<div class="col-md-9">
+										<input type="file" id="file" class="form-control"   (change)="fileChangeEvent($event)" placeholder="image" name="image" ngModel >
+										<img class="img-place" *ngIf="path_img" src="{{path_img}}" />
+									</div>
+		                        </div>
+
+		                      
+
+		                    	
+							</div>
+
+							<div class="form-actions center">
+								<button type="submit" [disabled]="!f.valid"  class="btn btn-raised btn-primary">
+	                                <i class="fa fa-check-square-o"></i> Save
+	                            </button>
+	                        </div>
+						</form>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+
+<!-- // Striped row layout section end -->
